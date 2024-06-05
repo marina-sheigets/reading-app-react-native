@@ -4,6 +4,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
 import ThemeContent from '@/hooks/useThemeColor';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -16,6 +17,8 @@ export default function RootLayout() {
     PoppinsBold: require('../assets/fonts/Poppins-Bold.ttf'),
   });
 
+  const queryClient = new QueryClient();
+
   useEffect(() => {
     if (loaded) {
       SplashScreen.hideAsync();
@@ -27,11 +30,13 @@ export default function RootLayout() {
   }
 
   return (
+    <QueryClientProvider client={queryClient}>
     <ThemeContent>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
     </ThemeContent>
+    </QueryClientProvider>
   );
 }

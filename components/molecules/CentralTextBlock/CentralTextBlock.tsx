@@ -6,7 +6,7 @@ import Title from "@/components/atoms/Title/Title";
 
 interface BaseProps {
   title: string;
-  subtitle: string;
+  subtitle?: string;
 }
 
 interface ButtonProps extends BaseProps {

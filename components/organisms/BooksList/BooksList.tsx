@@ -1,14 +1,36 @@
+import Loader from '@/components/atoms/Loader/Loader';
+import { Book } from '@/types'
 import React from 'react'
-import { Text } from 'react-native'
+import { ScrollView, StyleSheet } from 'react-native'
+import BookCard from '../BookCard/BookCard';
 
 interface BooksListProps {
-    books:any
+    books:Book[],
+    isLoading:boolean
 }
-function BooksList({books}:BooksListProps) {
+function BooksList({books, isLoading}:BooksListProps) {
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
-    <Text>BooksList</Text>
+    <ScrollView contentContainerStyle={styles.container}>
+      {
+        books.map((book)=>(
+          <BookCard key={book.id} book={book}/>
+        ))
+      }
+    </ScrollView>
   )
 }
+
+const styles = StyleSheet.create({
+  container:{
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap:10
+  }
+})
 
 export default BooksList
