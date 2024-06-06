@@ -10,7 +10,7 @@ function BooksPage() {
   const [books, setBooks] = useState<Book[]>([]);
   const { data, error, isLoading } = useQuery("booksData", () =>
     fetch(
-      "https://www.googleapis.com/books/v1/volumes?q=javascript&key=AIzaSyATF6KHnoKNnqafzipywXPFof9KebqVibE"
+      `https://www.googleapis.com/books/v1/volumes?q=javascript&key=${process.env.BOOKS_API_KEY}`
     ).then((res) => res.json())
   );
 
