@@ -3,7 +3,7 @@ import { Book } from "@/types";
 import { cutText, getInitials } from "@/utils/text-tools";
 import { Feather } from "@expo/vector-icons";
 import React from "react";
-import {  StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import styled from "styled-components/native";
 
 interface BookCardProps {
@@ -45,23 +45,18 @@ const styles = StyleSheet.create({
 });
 
 const BookContainer = styled.View`
-  width: 46%;
-  background-color: blue;
-  padding: 5px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
   background-color: white;
-  gap: 5px;
+  padding: 5px;
+  border-radius: 10px;
+  flex: 1;
+  margin: 5px;
 `;
 
 const BookDetails = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 100%;
-  justify-content: space-around;
-  gap: 10px;
+  justify-content: space-between;
 `;
 
 const Count = styled.Text`
@@ -75,7 +70,7 @@ const PagesAmount = styled.View`
 `;
 
 const Author = styled.Text`
-  font-size: 14;
+  font-size: 14px;
 `;
 
 const Cover = styled.Image`

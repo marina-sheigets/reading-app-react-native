@@ -5,17 +5,19 @@ import { Book } from "@/types"
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import { useQuery } from "react-query";
+import {BOOKS_API_KEY} from "@env";
+
 
 function BooksPage() {
   const [books, setBooks] = useState<Book[]>([]);
   const { data, error, isLoading } = useQuery("booksData", () =>
     fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=javascript&key=${process.env.BOOKS_API_KEY}`
+      `https://www.googleapis.com/books/v1/volumes?q=javascript&key=${BOOKS_API_KEY}`
     ).then((res) => res.json())
   );
 
   useEffect(() => {
-    if (data) {
+    if (data && data.items) {
       const filteredData = data.items.map((book:any) => ({
         id: book.id,
         title: book.volumeInfo.title,
