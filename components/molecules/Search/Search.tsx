@@ -1,9 +1,26 @@
+import useDebounce from "@/hooks/useDebounce";
 import { Feather } from "@expo/vector-icons";
-import React from "react";
+import React, { useState } from "react";
 import { View } from "react-native";
 import styled from "styled-components/native";
 
 function Search() {
+
+  const [search, setSearch] = useState('');
+
+
+  const onChangeText = (newQuery:string)=>{
+    setSearch(newQuery);
+    handleSearch(newQuery);
+  }
+
+  const handleSearch = useDebounce((query:string)=>{
+    if(query.trim().length){
+      
+    }
+  });
+
+
   return (
     <View>
       <SearchContainer>
@@ -11,8 +28,8 @@ function Search() {
 
         <SearchBar
           placeholder="Enter the book name"
-          value={""}
-          onChangeText={() => {}}
+          value={search}
+          onChangeText={onChangeText}
         />
 
         <Feather name="filter" size={30} color={"black"} />
