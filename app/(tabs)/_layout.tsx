@@ -1,8 +1,10 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
+import { useTranslation } from 'react-i18next';
 
 export default function TabLayout() {
+  const {t} = useTranslation();
 
   return (
     <Tabs
@@ -21,8 +23,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          headerTitle: 'In Progress',
-          tabBarLabel: 'Start to read',
+          headerTitle: t('In Progress'),
+          tabBarLabel: t('Start to read'),
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'timer' : 'timer-outline'} color={color} />
           ),
@@ -31,7 +33,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="books"
         options={{
-          title: 'Books',
+          title: t('Books'),
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'book' : 'book-outline'} color={color} />
           ),
@@ -40,7 +42,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="community"
         options={{
-          title: 'Community',
+          title: t('Community'),
           tabBarIcon: ({ color, focused}) => (
             <TabBarIcon name={focused ? 'people' : 'people-outline'} color={color} />
           ),
@@ -50,7 +52,7 @@ export default function TabLayout() {
         name="profile"
         
         options={{          
-          title: 'Profile',
+          title: t('Profile'),
           tabBarIcon: ({ color, focused}) => (
             <TabBarIcon name={focused ? 'person' : 'person-outline'} color={color} />
           ),

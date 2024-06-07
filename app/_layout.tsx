@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 import ThemeContent from '@/hooks/useThemeColor';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import '@/i18n/i18n';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();

@@ -1,11 +1,12 @@
 import useDebounce from "@/hooks/useDebounce";
 import { Feather } from "@expo/vector-icons";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { View } from "react-native";
 import styled from "styled-components/native";
 
 function Search() {
-
+  const { t } = useTranslation();
   const [search, setSearch] = useState('');
 
 
@@ -27,7 +28,7 @@ function Search() {
         <Feather name="search" size={30} color={"black"} />
 
         <SearchBar
-          placeholder="Enter the book name"
+          placeholder={t("Enter the book name")}
           value={search}
           onChangeText={onChangeText}
         />
